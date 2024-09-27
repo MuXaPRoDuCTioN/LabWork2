@@ -4,5 +4,5 @@
 int main() {
     //Проверяем первую структуру
 	AttackDMG DMG = {5, 3};
-	printf("%d", FinalDMG(DMG.PersonalDMG, DMG.EnemyDFN));
+	printf("%d", FinalDMG(DMG.PlayerDMG, DMG.EnemyDFN));
 }

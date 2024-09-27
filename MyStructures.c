@@ -1,18 +1,18 @@
 #include <stdio.h>
 #include "MyStructures.h"
 
-int FinalDMG(int PersonalDMG, int EnemyDFN) {
-    if (PersonalDMG - EnemyDFN < 0)
+int FinalDMG(int PlayerDMG, int EnemyDFN) {
+    if (PlayerDMG - EnemyDFN < 0)
         return 0;
-    return PersonalDMG - EnemyDFN;
+    return PlayerDMG - EnemyDFN;
 }
 
 int AllDefence(int HelmDef, int CuirDef, int GlovDef, int GreaDef, int BootDef) {
     return HelmDef + CuirDef + GlovDef + GreaDef + BootDef;
 }
 
-void CreateBiome(char *Name, int *RecomendLevel, int *MapSize) {
-    scanf("%s %d %d", Name, RecomendLevel, MapSize);
+void CreateBiome(char *Name, int *RecomendLevel, int *MaxMapSize) {
+    scanf("%s %d %d", Name, RecomendLevel, MaxMapSize);
 }
 
 void CheckAttributes(int Strength, int Intelligence, int Agility) {
@@ -44,4 +44,16 @@ void CheckAttributes(int Strength, int Intelligence, int Agility) {
         printf("Ловкий.\n");
     else if (Agility > 75 && Agility <= 100)
         printf("Изящный.\n");
+}
+
+void CreateQuest(char *Title, char *Description, int *Rewards, int *IsCompleted) {
+
+}
+
+void CreateItem(char *Name, char *ItemType, int *Value, int *Weight) {
+
+}
+
+void CreateAttackSpell(char *Name, int *Damage, int *Radius, int *Element) {
+
 }
