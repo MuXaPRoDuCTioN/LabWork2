@@ -83,6 +83,6 @@ typedef struct {
 } Inventory;
 
 //Функция для проверки структуры №8
-void CheckInvenory(int MaxWeight, int ItemsWeight);
+void CheckInvenory(int MaxWeight, int ItemsWeight, int ItemsCount);
 
 #endif // MYSTRUCTURES_H_INCLUDED

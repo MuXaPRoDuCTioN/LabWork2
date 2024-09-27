@@ -12,7 +12,12 @@ int AllDefence(int HelmDef, int CuirDef, int GlovDef, int GreaDef, int BootDef) 
 }
 
 void CreateBiome(char *Name, int *RecomendLevel, int *MaxMapSize) {
-    scanf("%s %d %d", Name, RecomendLevel, MaxMapSize);
+    printf("Введите название биома: ");
+    scanf("%s", Name);
+    printf("Введите Рекомендуемый уровень и Максимальный размер карты (в кол-ве блоков): ");
+    scanf("%d %d", RecomendLevel, MaxMapSize);
+
+    printf("Вы успешно создали биом!\n");
 }
 
 void CheckAttributes(int Strength, int Intelligence, int Agility) {
@@ -47,13 +52,42 @@ void CheckAttributes(int Strength, int Intelligence, int Agility) {
 }
 
 void CreateQuest(char *Title, char *Description, int *Rewards, int *IsCompleted) {
+    printf("Введите название задания: ");
+    scanf("%s", Title);
 
+    printf("Введите описание задания: ");
+    scanf("%s", Description);
+
+    printf("Введите награду в количестве золота за задание: ");
+    scanf("%d", Rewards);
+    *IsCompleted = 0;
+
+    printf("Вы успешно создали задание!\n");
 }
 
 void CreateItem(char *Name, char *ItemType, int *Value, int *Weight) {
+    printf("Введите название предмета: ");
+    scanf("%s", Name);
 
+    printf("Введите тип предмета: ");
+    scanf("%s", ItemType);
+
+    printf("Введите цену и вес предмета: ");
+    scanf("%d %d", Value, Weight);
+
+    printf("Вы успешно создали предмет!\n");
 }
 
 void CreateAttackSpell(char *Name, int *Damage, int *Radius, int *Element) {
+    printf("Введите название заклинания: ");
+    scanf("%s", Name);
 
+    printf("Введите Урон, Радиус взрыва, Стихию заклинания (0-2): ");
+    scanf("%d %d %d", Damage, Radius, Element);
+
+    printf("Вы успешно создали заклинание!\n");
+}
+
+void CheckInvenory(int MaxWeight, int ItemsWeight, int ItemsCount) {
+    printf("У вас еще свободно %d кг в инвентаре, всего предметов в инвентаре %d.\n", MaxWeight-ItemsWeight, ItemsCount);
 }
