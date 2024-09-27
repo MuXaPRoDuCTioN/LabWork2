@@ -10,6 +10,7 @@ typedef struct {
 //Функция для проверки структуры №1
 int FinalDMG(int PlayerDMG, int EnemyDFN);
 
+
 //№2 Хранит в себе общий показатель брони
 typedef struct {
     int HelmetDefence;        //показатель защиты шлема
@@ -22,6 +23,7 @@ typedef struct {
 //Функция для проверки структуры №2
 int AllDefence(int HelmDef, int CuirDef, int GlovDef, int GreaDef, int BootDef);
 
+
 //№3 Содержит в себе информацию о биоме
 typedef struct {
     char Name[10];                 //название биома
@@ -32,6 +34,7 @@ typedef struct {
 //Функция для проверки структуры №3
 void CreateBiome(char *Name, int *RecomendLevel, int *MaxMapSize);
 
+
 //№4 Содержит информацию об атрибутах
 typedef struct {
     int Strength;          //показатель силы
@@ -41,6 +44,7 @@ typedef struct {
 
 //Функция для проверки структуры №4
 void CheckAttributes(int Strength, int Intelligence, int Agility);
+
 
 //№5 Хранит в себе ифнормацию о задании
 typedef struct {
@@ -53,6 +57,7 @@ typedef struct {
 //Функция для проверки структуры №5
 void CreateQuest(char *Title, char *Description, int *Rewards, int *IsCompleted);
 
+
 //№6 Хранит в себе информацию об предмете
 typedef struct {
     char Name[50];        // название предмета
@@ -64,6 +69,7 @@ typedef struct {
 //Функция для проверки структуры №6
 void CreateItem(char *Name, char *ItemType, int *Value, int *Weight);
 
+
 //№7 Содержит информацию о заклинании
 typedef struct {
     char Name[50];       //название заклинания
@@ -74,6 +80,7 @@ typedef struct {
 
 //Функция для проверки структуры №7
 void CreateAttackSpell(char *Name, int *Damage, int *Radius, int *Element);
+
 
 //№8 Содержит информацию об инвентаре
 typedef struct {

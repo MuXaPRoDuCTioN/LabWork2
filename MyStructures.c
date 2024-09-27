@@ -21,7 +21,7 @@ void CreateBiome(char *Name, int *RecomendLevel, int *MaxMapSize) {
 }
 
 void CheckAttributes(int Strength, int Intelligence, int Agility) {
-    printf("Ваш персонаж: ");
+    printf("При показателях Силы, Интеллекта, Ловкости в %d %d %d, ваш персонаж: ", Strength, Intelligence, Agility);
 
     if (Strength > 0 && Strength <= 25)
         printf("Хрупкий, ");
