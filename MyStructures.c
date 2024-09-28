@@ -106,7 +106,7 @@ void CreateAttackSpell(char *Name, int *Damage, int *Radius, int *Element) {
         while (getchar() != '\n');
     } while (*Element < 0 || *Element > 2);
 
-    printf("Вы успешно создали заклинание!n");
+    printf("Вы успешно создали заклинание!\n");
 }
 
 //Вывод информации об инвентаре
