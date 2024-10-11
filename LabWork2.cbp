@@ -31,13 +31,9 @@
 		<Compiler>
 			<Add option="-Wall" />
 		</Compiler>
-		<Unit filename="MyStructures.c">
-			<Option compilerVar="CC" />
-		</Unit>
+		<Unit filename="MyStructures.cpp" />
 		<Unit filename="MyStructures.h" />
-		<Unit filename="mainFile.c">
-			<Option compilerVar="CC" />
-		</Unit>
+		<Unit filename="mainFile.cpp" />
 		<Extensions>
 			<lib_finder disable_auto="1" />
 		</Extensions>
