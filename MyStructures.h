@@ -1,15 +1,54 @@
 #ifndef MYSTRUCTURES_H_INCLUDED
 #define MYSTRUCTURES_H_INCLUDED
+#include <iostream>
+
+using namespace std;
 
 //№1 Хранит в себе урон нападающего и защиту обороняющегося
-typedef struct {
+class AttackDMG
+{
+private:
     int PlayerDMG;           //урон игрока
     int EnemyDFN;            //защита противника
-} AttackDMG;
 
-//Функция для проверки структуры №1
-int FinalDMG(int PlayerDMG, int EnemyDFN);
+public:
+    AttackDMG()         //Конструктор
+    {
+        cout << "Работа конструктора" << endl;
+        PlayerDMG = 0;
+        EnemyDFN = 0;
+    }
 
+    ~AttackDMG()         //Деструктор
+    {
+        cout << "Работа деструктора" << endl;
+    }
+
+    //Методы установки значений урона и защиты извне
+    void setPlayerDMG(int DMG)
+    {
+        PlayerDMG = DMG;
+    }
+
+    void setEnemyDFN(int DFN)
+    {
+        EnemyDFN = DFN;
+    }
+
+    //Методы получения значений урона и защиты извне
+    int getPlayerDMG() const
+    {
+        return PlayerDMG;
+    }
+
+    int getEnemyDFN() const
+    {
+        return EnemyDFN;
+    }
+
+    //Метод расчета наносимого урона
+    int FinalDMG();
+};
 
 //№2 Хранит в себе общий показатель брони
 typedef struct {

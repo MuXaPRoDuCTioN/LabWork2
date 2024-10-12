@@ -2,7 +2,7 @@
 #include "MyStructures.h"
 
 //Эта функция просто вычисляет значение урона, который получит противник
-int FinalDMG(int PlayerDMG, int EnemyDFN) {
+int AttackDMG::FinalDMG() {
     if (PlayerDMG - EnemyDFN < 0)
         return 0;
     return PlayerDMG - EnemyDFN;

@@ -1,14 +1,16 @@
-#include <stdio.h>
 #include <locale.h>
 #include "MyStructures.h"
 
 int main() {
     setlocale(LC_ALL, "Rus");
 
-    //ѕровер€ем первую структуру
-	AttackDMG DMG = {5, 3};
-	printf("ѕри атаке игрока %d и защите противника %d противник получит урон равный %d\n",DMG.PlayerDMG, DMG.EnemyDFN, FinalDMG(DMG.PlayerDMG, DMG.EnemyDFN));
-	printf("\n");
+    //ѕровер€ем первый класс
+    {
+        AttackDMG DMG;
+        DMG.setPlayerDMG(5);
+        DMG.setEnemyDFN(3);
+        cout << "ѕри уроне игрока " << DMG.getPlayerDMG() << " и защите противника " << DMG.getEnemyDFN() << " он получит " << DMG.FinalDMG() << " единицы урона." << endl;
+    }
 
     //ѕровер€ем вторую структуру
     Defence PlayerDefence = {2, 4, 1, 3, 2};
