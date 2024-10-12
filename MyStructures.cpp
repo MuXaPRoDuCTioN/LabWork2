@@ -1,4 +1,3 @@
-#include <stdio.h>
 #include "MyStructures.h"
 
 //Эта функция просто вычисляет значение урона, который получит противник
@@ -9,25 +8,24 @@ int AttackDMG::FinalDMG() {
 }
 
 //Считаем полный показатель брони
-int AllDefence(int HelmDef, int CuirDef, int GlovDef, int GreaDef, int BootDef) {
-    return HelmDef + CuirDef + GlovDef + GreaDef + BootDef;
+int Defence::AllDefence() {
+    return HelmetDefence + CuirassDefence + GlovesDefence + GreavesDefence + BootsDefence;
 }
 
 //Создание нового биома
-void CreateBiome(char *Name, int *RecomendLevel, int *MaxMapSize) {
+void Biome::CreateBiome() {
     printf("Введите название биома: ");
-    scanf("%s", Name);
-    while (getchar() != '\n');
+    cin >> Name;
 
     printf("Введите Рекомендуемый уровень и Максимальный размер карты (в кол-ве блоков): ");
-    scanf("%d %d", RecomendLevel, MaxMapSize);
+    scanf("%d %d", &RecomendLevel, &MaxMapSize);
     while (getchar() != '\n');
 
     printf("Вы успешно создали биом!\n");
 }
 
 //Выводит слово, которое зависит от показателей персонажа
-void CheckAttributes(int Strength, int Intelligence, int Agility) {
+void Attributes::CheckAttributes() {
     printf("При показателях Силы, Интеллекта, Ловкости в %d %d %d, ваш персонаж: ", Strength, Intelligence, Agility);
 
     if (Strength > 0 && Strength <= 25)

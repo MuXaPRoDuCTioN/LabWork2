@@ -51,38 +51,164 @@ public:
 };
 
 //№2 Хранит в себе общий показатель брони
-typedef struct {
+class Defence
+{
+private:
     int HelmetDefence;        //показатель защиты шлема
     int CuirassDefence;         //показатель защиты кирассы
     int GlovesDefence;         //показатель защиты перчаток
     int GreavesDefence;          //показатель защиты поножей
     int BootsDefence;           //показатель защиты сапог
-} Defence;
 
-//Функция для проверки структуры №2
-int AllDefence(int HelmDef, int CuirDef, int GlovDef, int GreaDef, int BootDef);
+public:
+    Defence()         //Конструктор
+    {
+        HelmetDefence = 0;
+        CuirassDefence = 0;
+        GlovesDefence = 0;
+        GreavesDefence = 0;
+        BootsDefence = 0;
+    }
 
+    ~Defence()         //Деструктор
+    {
+
+    }
+
+    //Метод установки значений защиты извне
+    void setDefence(int Helm, int Cuir, int Glov, int Grea, int Boot)
+    {
+        HelmetDefence = Helm;
+        CuirassDefence = Cuir;
+        GlovesDefence = Glov;
+        GreavesDefence = Grea;
+        BootsDefence = Boot;
+    }
+
+    //Методы получения значений урона и защиты извне
+    int getHelmDefence() const
+    {
+        return HelmetDefence;
+    }
+
+    int getCuirDefence() const
+    {
+        return CuirassDefence;
+    }
+
+    int getGlovDefence() const
+    {
+        return GlovesDefence;
+    }
+
+    int getGreaDefence() const
+    {
+        return GreavesDefence;
+    }
+
+    int getBootDefence() const
+    {
+        return BootsDefence;
+    }
+
+    //Метод расчета полной брони
+    int AllDefence();
+};
 
 //№3 Содержит в себе информацию о биоме
-typedef struct {
-    char Name[10];                 //название биома
+class Biome
+{
+private:
+    string Name;                 //название биома
     int RecomendLevel;             //рекомендуемый уровень
     int MaxMapSize;                //максимальный размер карты
-} Biome;
 
-//Функция для проверки структуры №3
-void CreateBiome(char *Name, int *RecomendLevel, int *MaxMapSize);
+public:
+    Biome()                  //Конструктор
+    {
+        Name = "\0";
+        RecomendLevel = 1;
+        MaxMapSize = 1;
+    }
+
+    ~Biome()                   //Деструктор
+    {
+
+    }
+
+    //Метод создания биома
+    void CreateBiome();
+
+    //Получение информации о биоме
+    string getName()
+    {
+        return Name;
+    }
+
+    int getRecLvl()
+    {
+        return RecomendLevel;
+    }
+
+    int getMaxMapSize()
+    {
+        return MaxMapSize;
+    }
+};
+
+
 
 
 //№4 Содержит информацию об атрибутах
-typedef struct {
+class Attributes
+{
+private:
     int Strength;          //показатель силы
     int Intelligence;       //показатель интеллекта
     int Agility;            //показатель ловкости
-} Attributes;
 
-//Функция для проверки структуры №4
-void CheckAttributes(int Strength, int Intelligence, int Agility);
+public:
+    Attributes()             //Конструктор
+    {
+        Strength = 1;
+        Intelligence = 1;
+        Agility = 1;
+    }
+
+    ~Attributes()            //Деструктор
+    {
+
+    }
+
+    //Метод установки значений атрибутов
+    void setAttributes(int STR, int INT, int AGL)
+    {
+        Strength = STR;
+        Intelligence = INT;
+        Agility = AGL;
+    }
+
+    //Метод получения значений атрибутов
+    int getStregth()
+    {
+        return Strength;
+    }
+
+    int getIntelligence()
+    {
+        return Intelligence;
+    }
+
+    int getAgility()
+    {
+        return Agility;
+    }
+
+    //Метод проверки атрибутов
+    void CheckAttributes();
+};
+
+
 
 
 //№5 Хранит в себе ифнормацию о задании

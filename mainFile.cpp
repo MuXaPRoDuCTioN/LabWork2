@@ -12,19 +12,21 @@ int main() {
         cout << "При уроне игрока " << DMG.getPlayerDMG() << " и защите противника " << DMG.getEnemyDFN() << " он получит " << DMG.FinalDMG() << " единицы урона." << endl;
     }
 
-    //Проверяем вторую структуру
-    Defence PlayerDefence = {2, 4, 1, 3, 2};
-    printf("При таких показателях защиты (%d, %d, %d, %d, %d) общая защита будет равна %d\n",PlayerDefence.HelmetDefence, PlayerDefence.CuirassDefence, PlayerDefence.GlovesDefence, PlayerDefence.GreavesDefence, PlayerDefence.BootsDefence, AllDefence(PlayerDefence.HelmetDefence, PlayerDefence.CuirassDefence, PlayerDefence.GlovesDefence, PlayerDefence.GreavesDefence, PlayerDefence.BootsDefence));
-    printf("\n");
+    //Проверяем второй класс
+    Defence DFN;
+    DFN.setDefence(3, 5, 1, 2, 1);
+    cout << "При показателях брони: " << DFN.getHelmDefence() << ", " << DFN.getCuirDefence() << ", " << DFN.getGlovDefence() << ", " << DFN.getGreaDefence() << ", " << DFN.getBootDefence() << " общий показатель равен " << DFN.AllDefence() << endl;
 
-    //Проверяем третью структуру
+
+    //Проверяем третий класс
     Biome Forest;
-    CreateBiome(Forest.Name, &Forest.RecomendLevel, &Forest.MaxMapSize);
+    Forest.CreateBiome();
     printf("\n");
 
-    //Проверяем четверую структуру
-    Attributes Player = {59, 35, 78};
-    CheckAttributes(Player.Strength, Player.Intelligence, Player.Agility);
+    //Проверяем четверый класс
+    Attributes Player;
+    Player.setAttributes(58, 79, 31);
+    Player.CheckAttributes();
     printf("\n");
 
     //Проверяем пятую структуру
