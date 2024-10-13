@@ -1,8 +1,7 @@
-#include <locale.h>
 #include "MyStructures.h"
 
 int main() {
-    setlocale(LC_ALL, "Rus");
+    system("chcp 1251");
 
     //Проверяем первый класс
     {
@@ -29,24 +28,26 @@ int main() {
     Player.CheckAttributes();
     printf("\n");
 
-    //Проверяем пятую структуру
+    //Проверяем пятый класс
     Quest MyQuest;
-    CreateQuest(MyQuest.Title, MyQuest.Description, &MyQuest.Rewards, &MyQuest.IsCompleted);
+    MyQuest.CreateQuest();
     printf("\n");
 
-    //Проверяем шестую структуру
+    //Проверяем шестой класс
     Item MyItem;
-    CreateItem(MyItem.Name, MyItem.ItemType, &MyItem.Value, &MyItem.Weight);
+    MyItem.CreateItem();
     printf("\n");
 
-    //Проверяем седьмую структуру
+    //Проверяем седьмой класс
     AttackSpell MySpell;
-    CreateAttackSpell(MySpell.Name, &MySpell.Damage, &MySpell.Radius, &MySpell.Element);
+    MySpell.CreateAttackSpell();
     printf("\n");
 
-    //Проверяем восьмую структуру
-    Inventory MyInvent = {18, 340, 267};
-    CheckInvenory(MyInvent.MaxWeight, MyInvent.ItemsWeight, MyInvent.ItemsCount);
+    //Проверяем восьмой класс
+    Inventory MyInvent;
+    MyInvent.setItemsCount(3);
+    MyInvent.setItemsWeight(29);
+    MyInvent.setMaxWeight(90);
+    MyInvent.CheckInvenory();
     printf("\n");
-
 }

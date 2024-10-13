@@ -1,6 +1,8 @@
 #ifndef MYSTRUCTURES_H_INCLUDED
 #define MYSTRUCTURES_H_INCLUDED
 #include <iostream>
+#include <string>
+#include<cstdlib>
 
 using namespace std;
 
@@ -140,17 +142,17 @@ public:
     void CreateBiome();
 
     //Получение информации о биоме
-    string getName()
+    string getName()  const
     {
         return Name;
     }
 
-    int getRecLvl()
+    int getRecLvl()  const
     {
         return RecomendLevel;
     }
 
-    int getMaxMapSize()
+    int getMaxMapSize()  const
     {
         return MaxMapSize;
     }
@@ -189,17 +191,17 @@ public:
     }
 
     //Метод получения значений атрибутов
-    int getStregth()
+    int getStregth()  const
     {
         return Strength;
     }
 
-    int getIntelligence()
+    int getIntelligence()  const
     {
         return Intelligence;
     }
 
-    int getAgility()
+    int getAgility()  const
     {
         return Agility;
     }
@@ -212,49 +214,205 @@ public:
 
 
 //№5 Хранит в себе ифнормацию о задании
-typedef struct {
-    char Title[50];      // название задания
-    char Description[200]; // описание задания
+class  Quest
+{
+private:
+    string Title;      // название задания
+    string Description; // описание задания
     int Rewards;         // награды за выполнение (например, опыт или предметы)
-    int IsCompleted;     // статус выполнения (0 - не выполнено, 1 - выполнено)
-} Quest;
+    bool IsCompleted;     // статус выполнения (0 - не выполнено, 1 - выполнено)
 
-//Функция для проверки структуры №5
-void CreateQuest(char *Title, char *Description, int *Rewards, int *IsCompleted);
+public:
+    Quest()      //Конструктор
+    {
+        Title = "\0";
+        Description = "\0";
+        Rewards = 0;
+        IsCompleted = false;
+    }
+
+    ~Quest()     //Деструктор
+    {
+
+    }
+
+    //Методы для получения значений задания
+    string getTitle()  const
+    {
+        return Title;
+    }
+
+    string getDescription() const
+    {
+        return Description;
+    }
+
+    int getRewards() const
+    {
+        return Rewards;
+    }
+
+    bool getComplited() const
+    {
+        return IsCompleted;
+    }
+
+    //Метод для создания задания
+    void CreateQuest();
+};
+
 
 
 //№6 Хранит в себе информацию об предмете
-typedef struct {
-    char Name[50];        // название предмета
-    char ItemType[20];   // тип предмета (оружие, броня, зелье и т.д.)
+class Item
+{
+private:
+    string Name;        // название предмета
+    string ItemType;   // тип предмета (оружие, броня, зелье и т.д.)
     int Value;            // стоимость предмета
     int Weight;           // вес предмета
-} Item;
 
-//Функция для проверки структуры №6
-void CreateItem(char *Name, char *ItemType, int *Value, int *Weight);
+public:
+    Item()
+    {
+        Name = "\0";
+        ItemType = "\0";
+        Value = 0;
+        Weight = 0;
+    }
+
+    ~Item()
+    {
+
+    }
+
+    //Методы для получения значений предмета
+    string getName()  const
+    {
+        return Name;
+    }
+
+    string getItemType() const
+    {
+        return ItemType;
+    }
+
+    int getValue() const
+    {
+        return Value;
+    }
+
+    bool getWeight() const
+    {
+        return Weight;
+    }
+
+    //Метод создания предмета
+    void CreateItem();
+};
 
 
 //№7 Содержит информацию о заклинании
-typedef struct {
-    char Name[50];       //название заклинания
+class AttackSpell
+{
+private:
+    string Name;       //название заклинания
     int Damage;          //урон заклинания
     int Radius;          //радиус взрыва заклинания
     int Element;           //стихия заклинания (0 - огонь, 1 - лед, 2 - электричество)
-} AttackSpell;
 
-//Функция для проверки структуры №7
-void CreateAttackSpell(char *Name, int *Damage, int *Radius, int *Element);
+public:
+    AttackSpell()     //Конструктор
+    {
+        Name = "\0";
+        Damage = 0;
+        Radius = 0;
+        Element = 0;
+    }
 
+    ~AttackSpell()       //Деструктор
+    {
+
+    }
+
+    //Методы получения значений
+    string getName() const
+    {
+        return Name;
+    }
+
+    int getDamage() const
+    {
+        return Damage;
+    }
+
+    int getRadius() const
+    {
+        return Radius;
+    }
+
+    int getElement() const
+    {
+        return Element;
+    }
+
+    //Метод создания атакующего заклинаиния
+    void CreateAttackSpell();
+};
 
 //№8 Содержит информацию об инвентаре
-typedef struct {
+class Inventory
+{
+private:
     int ItemsCount;        //число вещей в инвентаре
     int MaxWeight;         //максимальный переносимый вес
     int ItemsWeight;       //занятое предметами место в инвентаре
-} Inventory;
 
-//Функция для проверки структуры №8
-void CheckInvenory(int MaxWeight, int ItemsWeight, int ItemsCount);
+public:
+    Inventory()
+    {
+        ItemsCount = 0;
+        ItemsWeight = 0;
+        MaxWeight = 0;
+    }
+
+    ~Inventory()
+    {
+
+    }
+
+    void setMaxWeight(int MWeight)
+    {
+        MaxWeight = MWeight;
+    }
+
+    void setItemsWeight(int ItWeight)
+    {
+        ItemsWeight = ItWeight;
+    }
+
+    void setItemsCount(int ItCount)
+    {
+        ItemsCount = ItCount;
+    }
+
+    int getItemsCount() const
+    {
+        return ItemsCount;
+    }
+
+    int getItemsWeight() const
+    {
+        return ItemsWeight;
+    }
+
+    int gwtMaxWeight() const
+    {
+        return MaxWeight;
+    }
+
+    //Метод проверки инвентаря
+    void CheckInvenory();
+};
 
 #endif // MYSTRUCTURES_H_INCLUDED

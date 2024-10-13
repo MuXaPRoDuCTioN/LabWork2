@@ -15,7 +15,7 @@ int Defence::AllDefence() {
 //Создание нового биома
 void Biome::CreateBiome() {
     printf("Введите название биома: ");
-    cin >> Name;
+    getline(cin, Name);
 
     printf("Введите Рекомендуемый уровень и Максимальный размер карты (в кол-ве блоков): ");
     scanf("%d %d", &RecomendLevel, &MaxMapSize);
@@ -57,57 +57,53 @@ void Attributes::CheckAttributes() {
 }
 
 //Создание нового задания
-void CreateQuest(char *Title, char *Description, int *Rewards, int *IsCompleted) {
+void Quest::CreateQuest() {
     printf("Введите название задания: ");
-    scanf("%s", Title);
-    while (getchar() != '\n');
+    getline(cin, Title);
 
     printf("Введите описание задания: ");
-    scanf("%s", Description);
-    while (getchar() != '\n');
+    getline(cin, Description);
+    cout << Description << endl;
 
     printf("Введите награду в количестве золота за задание: ");
-    scanf("%d", Rewards);
+    scanf("%d", &Rewards);
     while (getchar() != '\n');
 
-    *IsCompleted = 0;
+    IsCompleted = false;
 
     printf("Вы успешно создали задание!\n");
 }
 
 //Создание нового предмета
-void CreateItem(char *Name, char *ItemType, int *Value, int *Weight) {
+void Item::CreateItem() {
     printf("Введите название предмета: ");
-    scanf("%s", Name);
-    while (getchar() != '\n');
+    getline(cin, Name);
 
     printf("Введите тип предмета: ");
-    scanf("%s", ItemType);
-    while (getchar() != '\n');
+    getline(cin, ItemType);
 
     printf("Введите цену и вес предмета: ");
-    scanf("%d %d", Value, Weight);
+    scanf("%d %d", &Value, &Weight);
     while (getchar() != '\n');
 
     printf("Вы успешно создали предмет!\n");
 }
 
 //Создание новго атакуещего заклинания
-void CreateAttackSpell(char *Name, int *Damage, int *Radius, int *Element) {
+void AttackSpell::CreateAttackSpell() {
     printf("Введите название заклинания: ");
-    scanf("%s", Name);
-    while (getchar() != '\n');
+    getline(cin, Name);
 
     do {
         printf("Введите Урон, Радиус взрыва, Стихию заклинания (0-2): ");
-        scanf("%d %d %d", Damage, Radius, Element);
+        scanf("%d %d %d", &Damage, &Radius, &Element);
         while (getchar() != '\n');
-    } while (*Element < 0 || *Element > 2);
+    } while (Element < 0 || Element > 2);
 
     printf("Вы успешно создали заклинание!\n");
 }
 
 //Вывод информации об инвентаре
-void CheckInvenory(int MaxWeight, int ItemsWeight, int ItemsCount) {
+void Inventory::CheckInvenory() {
     printf("У вас еще свободно %d кг в инвентаре, всего предметов в инвентаре %d.\n", MaxWeight-ItemsWeight, ItemsCount);
 }
