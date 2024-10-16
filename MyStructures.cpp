@@ -63,11 +63,8 @@ void Quest::CreateQuest() {
 
     printf("Введите описание задания: ");
     getline(cin, Description);
-    cout << Description << endl;
 
-    printf("Введите награду в количестве золота за задание: ");
-    scanf("%d", &Rewards);
-    while (getchar() != '\n');
+    cout << "Предмет в награду за задание: " << Reward->getName() << endl;
 
     IsCompleted = false;
 
@@ -104,6 +101,6 @@ void AttackSpell::CreateAttackSpell() {
 }
 
 //Вывод информации об инвентаре
-void Inventory::CheckInvenory() {
-    printf("У вас еще свободно %d кг в инвентаре, всего предметов в инвентаре %d.\n", MaxWeight-ItemsWeight, ItemsCount);
+void Inventory::CheckInventory() {
+    printf("Свободного места в инвентаре: %d\n", MaxItems-ItemsCount);
 }

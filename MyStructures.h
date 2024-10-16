@@ -3,6 +3,7 @@
 #include <iostream>
 #include <string>
 #include<cstdlib>
+#include <ctime>
 
 using namespace std;
 
@@ -158,9 +159,6 @@ public:
     }
 };
 
-
-
-
 //№4 Содержит информацию об атрибутах
 class Attributes
 {
@@ -210,59 +208,6 @@ public:
     void CheckAttributes();
 };
 
-
-
-
-//№5 Хранит в себе ифнормацию о задании
-class  Quest
-{
-private:
-    string Title;      // название задания
-    string Description; // описание задания
-    int Rewards;         // награды за выполнение (например, опыт или предметы)
-    bool IsCompleted;     // статус выполнения (0 - не выполнено, 1 - выполнено)
-
-public:
-    Quest()      //Конструктор
-    {
-        Title = "\0";
-        Description = "\0";
-        Rewards = 0;
-        IsCompleted = false;
-    }
-
-    ~Quest()     //Деструктор
-    {
-
-    }
-
-    //Методы для получения значений задания
-    string getTitle()  const
-    {
-        return Title;
-    }
-
-    string getDescription() const
-    {
-        return Description;
-    }
-
-    int getRewards() const
-    {
-        return Rewards;
-    }
-
-    bool getComplited() const
-    {
-        return IsCompleted;
-    }
-
-    //Метод для создания задания
-    void CreateQuest();
-};
-
-
-
 //№6 Хранит в себе информацию об предмете
 class Item
 {
@@ -311,6 +256,49 @@ public:
     void CreateItem();
 };
 
+//№5 Хранит в себе ифнормацию о задании
+class Quest
+{
+private:
+    string Title;      // название задания
+    string Description; // описание задания
+    Item* Reward;       //Награда за выполнение задания
+    bool IsCompleted;     // статус выполнения (0 - не выполнено, 1 - выполнено)
+
+public:
+    Quest(Item* item)      //Конструктор
+    {
+        Title = "\0";
+        Description = "\0";
+        IsCompleted = false;
+
+        Reward = item;
+    }
+
+    ~Quest()     //Деструктор
+    {
+
+    }
+
+    //Методы для получения значений задания
+    string getTitle()  const
+    {
+        return Title;
+    }
+
+    string getDescription() const
+    {
+        return Description;
+    }
+
+    bool getComplited() const
+    {
+        return IsCompleted;
+    }
+
+    //Метод для создания задания
+    void CreateQuest();
+};
 
 //№7 Содержит информацию о заклинании
 class AttackSpell
@@ -365,30 +353,31 @@ class Inventory
 {
 private:
     int ItemsCount;        //число вещей в инвентаре
-    int MaxWeight;         //максимальный переносимый вес
-    int ItemsWeight;       //занятое предметами место в инвентаре
+    int MaxItems;         //максимальное число вещей в инвентаре
+    int *Invent;          //здесь будут храниться ID предметов
 
 public:
-    Inventory()
+    Inventory(int MxItems)       //Конструктор
     {
         ItemsCount = 0;
-        ItemsWeight = 0;
-        MaxWeight = 0;
+        MaxItems = MxItems;
+
+        Invent = new int[MaxItems];
+        for (int i = 0; i < MaxItems; i++)
+        {
+            Invent[i] = 0;
+        }
     }
 
-    ~Inventory()
+    ~Inventory()             //Деструктор
     {
-
+        delete [](Invent);
     }
 
-    void setMaxWeight(int MWeight)
+    //Методы установки значений
+    void setMaxItems(int MItems)
     {
-        MaxWeight = MWeight;
-    }
-
-    void setItemsWeight(int ItWeight)
-    {
-        ItemsWeight = ItWeight;
+        MaxItems = MItems;
     }
 
     void setItemsCount(int ItCount)
@@ -396,23 +385,36 @@ public:
         ItemsCount = ItCount;
     }
 
+    //Методы получения значений
     int getItemsCount() const
     {
         return ItemsCount;
     }
 
-    int getItemsWeight() const
+    int getMaxItems() const
     {
-        return ItemsWeight;
+        return MaxItems;
     }
 
-    int gwtMaxWeight() const
+    void fillInv()
     {
-        return MaxWeight;
+        for (int i = 0; i < ItemsCount; i++)
+        {
+            Invent[i] = rand();
+        }
+    }
+
+    void showInv()
+    {
+        for (int i = 0; i < ItemsCount; i++)
+        {
+            cout << Invent[i] << " ";
+        }
+        cout << endl;
     }
 
     //Метод проверки инвентаря
-    void CheckInvenory();
+    void CheckInventory();
 };
 
 #endif // MYSTRUCTURES_H_INCLUDED

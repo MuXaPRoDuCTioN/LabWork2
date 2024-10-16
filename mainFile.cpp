@@ -1,7 +1,10 @@
 #include "MyStructures.h"
 
 int main() {
+
     system("chcp 1251");
+    srand(time(0));
+    cout << endl;
 
     //Проверяем первый класс
     {
@@ -28,14 +31,14 @@ int main() {
     Player.CheckAttributes();
     printf("\n");
 
-    //Проверяем пятый класс
-    Quest MyQuest;
-    MyQuest.CreateQuest();
-    printf("\n");
-
     //Проверяем шестой класс
     Item MyItem;
     MyItem.CreateItem();
+    printf("\n");
+
+    //Проверяем пятый класс
+    Quest MyQuest(&MyItem);
+    MyQuest.CreateQuest();
     printf("\n");
 
     //Проверяем седьмой класс
@@ -44,10 +47,12 @@ int main() {
     printf("\n");
 
     //Проверяем восьмой класс
-    Inventory MyInvent;
-    MyInvent.setItemsCount(3);
-    MyInvent.setItemsWeight(29);
-    MyInvent.setMaxWeight(90);
-    MyInvent.CheckInvenory();
+    Inventory *MyInvent = new Inventory(30);
+    MyInvent->setItemsCount(4);
+
+    MyInvent->fillInv();
+    MyInvent->showInv();
+
+    MyInvent->CheckInventory();
     printf("\n");
 }
