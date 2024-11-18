@@ -49,8 +49,8 @@ public:
         return EnemyDFN;
     }
 
-    //Метод расчета наносимого урона
-    int FinalDMG();
+    //Дружественный класс, в котором содержаться вычисления
+    friend class Calculator;
 };
 
 //№2 Хранит в себе общий показатель брони
@@ -114,8 +114,8 @@ public:
         return BootsDefence;
     }
 
-    //Метод расчета полной брони (возврат с помощью указателя)
-    void AllDefence(int* res);
+    //Дружественный класс, в котором содержаться вычисления
+    friend class Calculator;
 };
 
 //№3 Содержит в себе информацию о биоме
@@ -369,9 +369,37 @@ public:
         }
     }
 
+    Inventory(const Inventory& Other)    //Конструктор копии
+    {
+        ItemsCount = Other.ItemsCount;
+        MaxItems = Other.MaxItems;
+
+        Invent = new int[MaxItems];
+        for (int i = 0; i < MaxItems; i++)
+        {
+            Invent[i] = Other.Invent[i];
+        }
+    }
+
     ~Inventory()             //Деструктор
     {
         delete [](Invent);
+    }
+
+    //Перегрузка оператора присваивания
+    Inventory& operator=(const Inventory& Other)
+    {
+        if (this != &Other)
+        {
+            ItemsCount = Other.ItemsCount;
+            MaxItems = Other.MaxItems;
+
+            Invent = new int[MaxItems];
+            for (int i = 0; i < MaxItems; i++)
+            {
+                Invent[i] = Other.Invent[i];
+            }
+        }
     }
 
     //Методы установки значений
@@ -413,8 +441,27 @@ public:
         cout << endl;
     }
 
+    //Перегрузка оператора сложения
+    Inventory operator+(int MoreItems)
+    {
+        Inventory NewInv(*this);
+        NewInv.MaxItems += MoreItems;
+        return NewInv;
+    }
+
     //Метод проверки инвентаря
     void CheckInventory();
+};
+
+//Класс, в котором содержатся вычисления выражений
+class Calculator
+{
+public:
+    //Метод расчета наносимого урона
+    int FinalDMG(AttackDMG& DMG);
+
+    //Метод расчета полной брони (возврат с помощью указателя)
+    void AllDefence(Defence& DFN, int* res);
 };
 
 #endif // MYSTRUCTURES_H_INCLUDED

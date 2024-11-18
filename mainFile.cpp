@@ -4,22 +4,22 @@ int main() {
 
     system("chcp 1251");
     srand(time(0));
-
     cout << endl;
+    Calculator calc;
 
     //Проверяем первый класс
     {
         AttackDMG DMG;
         DMG.setPlayerDMG(5);
         DMG.setEnemyDFN(3);
-        cout << "При уроне игрока " << DMG.getPlayerDMG() << " и защите противника " << DMG.getEnemyDFN() << " он получит " << DMG.FinalDMG() << " единицы урона." << endl;
+        cout << "При уроне игрока " << DMG.getPlayerDMG() << " и защите противника " << DMG.getEnemyDFN() << " он получит " << calc.FinalDMG(DMG) << " единицы урона." << endl;
     }
 
     //Проверяем второй класс
     Defence DFN;
     int Res;
     DFN.setDefence(3, 5, 1, 2, 1);
-    DFN.AllDefence(&Res);
+    calc.AllDefence(DFN, &Res);
     cout << "При показателях брони: " << DFN.getHelmDefence() << ", " << DFN.getCuirDefence() << ", " << DFN.getGlovDefence() << ", " << DFN.getGreaDefence() << ", " << DFN.getBootDefence() << " общий показатель равен " << Res << endl;
 
 
@@ -57,5 +57,7 @@ int main() {
     MyInvent->showInv();
 
     MyInvent->CheckInventory();
+
+    MyInvent = MyInvent + 5;
     printf("\n");
 }

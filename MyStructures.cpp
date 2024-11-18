@@ -1,15 +1,17 @@
 #include "MyStructures.h"
 
+
 //Эта функция просто вычисляет значение урона, который получит противник
-int AttackDMG::FinalDMG() {
-    if (PlayerDMG - EnemyDFN < 0)
+int Calculator::FinalDMG(AttackDMG& DMG) {
+    if (DMG.PlayerDMG - DMG.EnemyDFN < 0)
         return 0;
-    return PlayerDMG - EnemyDFN;
+    return DMG.PlayerDMG - DMG.EnemyDFN;
 }
 
+
 //Считаем полный показатель брони
-void Defence::AllDefence(int* res) {
-    *res = HelmetDefence + CuirassDefence + GlovesDefence + GreavesDefence + BootsDefence;
+void Calculator::AllDefence(Defence& DFN, int* res) {
+    *res = DFN.HelmetDefence + DFN.CuirassDefence + DFN.GlovesDefence + DFN.GreavesDefence + DFN.BootsDefence;
 }
 
 //Создание нового биома
