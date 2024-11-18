@@ -8,8 +8,8 @@ int AttackDMG::FinalDMG() {
 }
 
 //—читаем полный показатель брони
-int Defence::AllDefence() {
-    return HelmetDefence + CuirassDefence + GlovesDefence + GreavesDefence + BootsDefence;
+void Defence::AllDefence(int* res) {
+    *res = HelmetDefence + CuirassDefence + GlovesDefence + GreavesDefence + BootsDefence;
 }
 
 //—оздание нового биома

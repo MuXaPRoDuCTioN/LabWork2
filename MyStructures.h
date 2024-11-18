@@ -2,7 +2,7 @@
 #define MYSTRUCTURES_H_INCLUDED
 #include <iostream>
 #include <string>
-#include<cstdlib>
+#include <cstdlib>
 #include <ctime>
 
 using namespace std;
@@ -38,13 +38,13 @@ public:
         EnemyDFN = DFN;
     }
 
-    //Методы получения значений урона и защиты извне
-    int getPlayerDMG() const
+    //Методы получения значений урона и защиты извне (возврат с  помощью ссылки)
+    const int& getPlayerDMG() const
     {
         return PlayerDMG;
     }
 
-    int getEnemyDFN() const
+    const int& getEnemyDFN() const
     {
         return EnemyDFN;
     }
@@ -114,8 +114,8 @@ public:
         return BootsDefence;
     }
 
-    //Метод расчета полной брони
-    int AllDefence();
+    //Метод расчета полной брони (возврат с помощью указателя)
+    void AllDefence(int* res);
 };
 
 //№3 Содержит в себе информацию о биоме

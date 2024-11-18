@@ -16,8 +16,10 @@ int main() {
 
     //Проверяем второй класс
     Defence DFN;
+    int Res;
     DFN.setDefence(3, 5, 1, 2, 1);
-    cout << "При показателях брони: " << DFN.getHelmDefence() << ", " << DFN.getCuirDefence() << ", " << DFN.getGlovDefence() << ", " << DFN.getGreaDefence() << ", " << DFN.getBootDefence() << " общий показатель равен " << DFN.AllDefence() << endl;
+    DFN.AllDefence(&Res);
+    cout << "При показателях брони: " << DFN.getHelmDefence() << ", " << DFN.getCuirDefence() << ", " << DFN.getGlovDefence() << ", " << DFN.getGreaDefence() << ", " << DFN.getBootDefence() << " общий показатель равен " << Res << endl;
 
 
     //Проверяем третий класс
