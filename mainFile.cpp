@@ -4,51 +4,52 @@ int main() {
 
     system("chcp 1251");
     srand(time(0));
+
     cout << endl;
 
-    //Ïðîâåðÿåì ïåðâûé êëàññ
+    //ÐŸÑ€Ð¾Ð²ÐµÑ€ÑÐµÐ¼ Ð¿ÐµÑ€Ð²Ñ‹Ð¹ ÐºÐ»Ð°ÑÑ
     {
         AttackDMG DMG;
         DMG.setPlayerDMG(5);
         DMG.setEnemyDFN(3);
-        cout << "Ïðè óðîíå èãðîêà " << DMG.getPlayerDMG() << " è çàùèòå ïðîòèâíèêà " << DMG.getEnemyDFN() << " îí ïîëó÷èò " << DMG.FinalDMG() << " åäèíèöû óðîíà." << endl;
+        cout << "ÐŸÑ€Ð¸ ÑƒÑ€Ð¾Ð½Ðµ Ð¸Ð³Ñ€Ð¾ÐºÐ° " << DMG.getPlayerDMG() << " Ð¸ Ð·Ð°Ñ‰Ð¸Ñ‚Ðµ Ð¿Ñ€Ð¾Ñ‚Ð¸Ð²Ð½Ð¸ÐºÐ° " << DMG.getEnemyDFN() << " Ð¾Ð½ Ð¿Ð¾Ð»ÑƒÑ‡Ð¸Ñ‚ " << DMG.FinalDMG() << " ÐµÐ´Ð¸Ð½Ð¸Ñ†Ñ‹ ÑƒÑ€Ð¾Ð½Ð°." << endl;
     }
 
-    //Ïðîâåðÿåì âòîðîé êëàññ
+    //ÐŸÑ€Ð¾Ð²ÐµÑ€ÑÐµÐ¼ Ð²Ñ‚Ð¾Ñ€Ð¾Ð¹ ÐºÐ»Ð°ÑÑ
     Defence DFN;
     int Res;
     DFN.setDefence(3, 5, 1, 2, 1);
     DFN.AllDefence(&Res);
-    cout << "Ïðè ïîêàçàòåëÿõ áðîíè: " << DFN.getHelmDefence() << ", " << DFN.getCuirDefence() << ", " << DFN.getGlovDefence() << ", " << DFN.getGreaDefence() << ", " << DFN.getBootDefence() << " îáùèé ïîêàçàòåëü ðàâåí " << Res << endl;
+    cout << "ÐŸÑ€Ð¸ Ð¿Ð¾ÐºÐ°Ð·Ð°Ñ‚ÐµÐ»ÑÑ… Ð±Ñ€Ð¾Ð½Ð¸: " << DFN.getHelmDefence() << ", " << DFN.getCuirDefence() << ", " << DFN.getGlovDefence() << ", " << DFN.getGreaDefence() << ", " << DFN.getBootDefence() << " Ð¾Ð±Ñ‰Ð¸Ð¹ Ð¿Ð¾ÐºÐ°Ð·Ð°Ñ‚ÐµÐ»ÑŒ Ñ€Ð°Ð²ÐµÐ½ " << Res << endl;
 
 
-    //Ïðîâåðÿåì òðåòèé êëàññ
+    //ÐŸÑ€Ð¾Ð²ÐµÑ€ÑÐµÐ¼ Ñ‚Ñ€ÐµÑ‚Ð¸Ð¹ ÐºÐ»Ð°ÑÑ
     Biome Forest;
     Forest.CreateBiome();
     printf("\n");
 
-    //Ïðîâåðÿåì ÷åòâåðûé êëàññ
+    //ÐŸÑ€Ð¾Ð²ÐµÑ€ÑÐµÐ¼ Ñ‡ÐµÑ‚Ð²ÐµÑ€Ñ‹Ð¹ ÐºÐ»Ð°ÑÑ
     Attributes Player;
     Player.setAttributes(58, 79, 31);
     Player.CheckAttributes();
     printf("\n");
 
-    //Ïðîâåðÿåì øåñòîé êëàññ
+    //ÐŸÑ€Ð¾Ð²ÐµÑ€ÑÐµÐ¼ ÑˆÐµÑÑ‚Ð¾Ð¹ ÐºÐ»Ð°ÑÑ
     Item MyItem;
     MyItem.CreateItem();
     printf("\n");
 
-    //Ïðîâåðÿåì ïÿòûé êëàññ
+    //ÐŸÑ€Ð¾Ð²ÐµÑ€ÑÐµÐ¼ Ð¿ÑÑ‚Ñ‹Ð¹ ÐºÐ»Ð°ÑÑ
     Quest MyQuest(&MyItem);
     MyQuest.CreateQuest();
     printf("\n");
 
-    //Ïðîâåðÿåì ñåäüìîé êëàññ
+    //ÐŸÑ€Ð¾Ð²ÐµÑ€ÑÐµÐ¼ ÑÐµÐ´ÑŒÐ¼Ð¾Ð¹ ÐºÐ»Ð°ÑÑ
     AttackSpell MySpell;
     MySpell.CreateAttackSpell();
     printf("\n");
 
-    //Ïðîâåðÿåì âîñüìîé êëàññ
+    //ÐŸÑ€Ð¾Ð²ÐµÑ€ÑÐµÐ¼ Ð²Ð¾ÑÑŒÐ¼Ð¾Ð¹ ÐºÐ»Ð°ÑÑ
     Inventory *MyInvent = new Inventory(30);
     MyInvent->setItemsCount(4);
 
