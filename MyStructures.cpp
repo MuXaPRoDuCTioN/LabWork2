@@ -28,33 +28,33 @@ void Biome::CreateBiome() {
 
 //Выводит слово, которое зависит от показателей персонажа
 void Attributes::CheckAttributes() {
-    printf("При показателях Силы, Интеллекта, Ловкости в %d %d %d, ваш персонаж: ", Strength, Intelligence, Agility);
+    printf("При показателях Силы, Интеллекта, Ловкости в %d %d %d, ваш персонаж: ", STR, INT, AGL);
 
-    if (Strength > 0 && Strength <= 25)
+    if (STR > 0 && STR <= 25)
         printf("Хрупкий, ");
-    else if (Strength > 25 && Strength <= 50)
+    else if (STR > 25 && STR <= 50)
         printf("Слабый, ");
-    else if (Strength > 50 && Strength <= 75)
+    else if (STR > 50 && STR <= 75)
         printf("Крепкий, ");
-    else if (Strength > 75 && Strength <= 100)
+    else if (STR > 75 && STR <= 100)
         printf("Могучий, ");
 
-    if (Intelligence > 0 && Intelligence <= 25)
+    if (INT > 0 && INT <= 25)
         printf("Слабоумный, ");
-    else if (Intelligence > 25 && Intelligence <= 50)
+    else if (INT > 25 && INT <= 50)
         printf("Глупый, ");
-    else if (Intelligence > 50 && Intelligence <= 75)
+    else if (INT > 50 && INT <= 75)
         printf("Знающий, ");
-    else if (Intelligence > 75 && Intelligence <= 100)
+    else if (INT > 75 && INT <= 100)
         printf("Умный, ");
 
-    if (Agility > 0 && Agility <= 25)
+    if (AGL > 0 && AGL <= 25)
         printf("Неуклюжий.\n ");
-    else if (Agility > 25 && Agility <= 50)
+    else if (AGL > 25 && AGL <= 50)
         printf("Неловкий.\n");
-    else if (Agility > 50 && Agility <= 75)
+    else if (AGL > 50 && AGL <= 75)
         printf("Ловкий.\n");
-    else if (Agility > 75 && Agility <= 100)
+    else if (AGL > 75 && AGL <= 100)
         printf("Изящный.\n");
 }
 

@@ -1,4 +1,5 @@
 #include "MyStructures.h"
+int Attributes::totalInputCounting;
 
 int main() {
 
@@ -30,8 +31,33 @@ int main() {
 
     //Проверяем четверый класс
     Attributes Player;
-    Player.setAttributes(58, 79, 31);
-    Player.CheckAttributes();
+    int STR = 1, INT = 1, AGL = 1;
+    char userResponse;
+
+    try {
+    do {
+        cout << "Введите значение силы: ";
+        cin >> STR;
+
+        cout << "Введите значение интеллекта: ";
+        cin >> INT;
+
+        cout << "Введите значение ловкости: ";
+        cin >> AGL;
+
+        Player.setAttributes(STR, INT, AGL);
+        Player.CheckAttributes();
+
+        cout << "Хотите повторить? (д/н): ";
+        cin >> userResponse;
+        printf("\n");
+    } while (userResponse == 'д');
+    }
+    catch (const std::exception& e) {
+        cerr << "Непредвиденная ошибка: " << e.what() << endl;
+    }
+
+    cout << "Успешных вводов атрибутов: " << Player.getTotalInputCounting() << endl;
     printf("\n");
 
     //Проверяем шестой класс
@@ -50,14 +76,17 @@ int main() {
     printf("\n");
 
     //Проверяем восьмой класс
-    Inventory *MyInvent = new Inventory(30);
-    MyInvent->setItemsCount(4);
+    Inventory *MyInvent1 = new Inventory(30);
+    MyInvent1->setItemsCount(4);
 
-    MyInvent->fillInv();
-    MyInvent->showInv();
+    MyInvent1->fillInv();
+    MyInvent1->showInv();
 
-    MyInvent->CheckInventory();
+    MyInvent1->CheckInventory();
 
-    MyInvent = MyInvent + 5;
+    Inventory *MyInvent2(MyInvent1);
+    MyInvent2->CheckInventory();
     printf("\n");
+
 }
+

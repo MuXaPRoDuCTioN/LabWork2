@@ -4,6 +4,7 @@
 #include <string>
 #include <cstdlib>
 #include <ctime>
+#include <stdexcept>
 
 using namespace std;
 
@@ -163,16 +164,19 @@ public:
 class Attributes
 {
 private:
-    int Strength;          //показатель силы
-    int Intelligence;       //показатель интеллекта
-    int Agility;            //показатель ловкости
+    int STR;          //показатель силы
+    int INT;       //показатель интеллекта
+    int AGL;            //показатель ловкости
+    static int totalInputCounting;    //показывает, сколько раз вводили данные
+    static const int MIN_ATR = 1;    //минимальная граница
+	static const int MAX_ATR = 100;   //максимальная граница
 
 public:
     Attributes()             //Конструктор
     {
-        Strength = 1;
-        Intelligence = 1;
-        Agility = 1;
+        STR = 1;
+        INT = 1;
+        AGL = 1;
     }
 
     ~Attributes()            //Деструктор
@@ -183,29 +187,51 @@ public:
     //Метод установки значений атрибутов
     void setAttributes(int STR, int INT, int AGL)
     {
-        Strength = STR;
-        Intelligence = INT;
-        Agility = AGL;
+        //Проверка введенных данных
+        try {
+            if (STR < MIN_ATR || STR > MAX_ATR)
+                throw runtime_error("Введено неверное значение силы");
+            this->STR = STR;
+
+            if (INT < MIN_ATR || INT > MAX_ATR)
+                throw runtime_error("Введено неверное значение интеллекта");
+            this->INT = INT;
+
+            if (AGL < MIN_ATR || AGL > MAX_ATR)
+                throw runtime_error("Введено неверное значение ловкости");
+            this->AGL = AGL;
+
+            totalInputCounting++;
+        }
+        catch (const runtime_error& e) {
+            cerr << "Ошибка ввода: " << e.what() << endl;
+        }
     }
 
     //Метод получения значений атрибутов
     int getStregth()  const
     {
-        return Strength;
+        return STR;
     }
 
     int getIntelligence()  const
     {
-        return Intelligence;
+        return INT;
     }
 
     int getAgility()  const
     {
-        return Agility;
+        return AGL;
     }
 
     //Метод проверки атрибутов
     void CheckAttributes();
+
+    //Статический метод для получения статического значения
+    static int getTotalInputCounting()
+	{
+		return totalInputCounting;
+	}
 };
 
 //№6 Хранит в себе информацию об предмете
@@ -439,14 +465,6 @@ public:
             cout << Invent[i] << " ";
         }
         cout << endl;
-    }
-
-    //Перегрузка оператора сложения
-    Inventory operator+(int MoreItems)
-    {
-        Inventory NewInv(*this);
-        NewInv.MaxItems += MoreItems;
-        return NewInv;
     }
 
     //Метод проверки инвентаря
