@@ -106,3 +106,4 @@ void AttackSpell::CreateAttackSpell() {
 void Inventory::CheckInventory() {
     printf("Свободного места в инвентаре: %d\n", MaxItems-ItemsCount);
 }
+

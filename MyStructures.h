@@ -235,9 +235,9 @@ public:
 };
 
 //№6 Хранит в себе информацию об предмете
-class Item
+class Item   //Абстрактный класс
 {
-private:
+protected:
     string Name;        // название предмета
     string ItemType;   // тип предмета (оружие, броня, зелье и т.д.)
     int Value;            // стоимость предмета
@@ -250,9 +250,12 @@ public:
         ItemType = "\0";
         Value = 0;
         Weight = 0;
+
+        cout << "Конструктор базового класса" << endl;
     }
 
-    ~Item()
+    //Виртуальный деструктор
+    virtual ~Item()
     {
 
     }
@@ -278,8 +281,21 @@ public:
         return Weight;
     }
 
-    //Метод создания предмета
-    void CreateItem();
+    //Виртуальный метод создания предмета
+    virtual void CreateItem();
+
+    //Перегрузка оператора присваивания
+    Item& operator=(const Item& other)
+    {
+        if (this != &other)
+        {
+            Name = other.Name;
+            ItemType = other.ItemType;
+            Value = other.Value;
+            Weight = other.Weight;
+        }
+        return *this;
+    }
 };
 
 //№5 Хранит в себе ифнормацию о задании
@@ -480,6 +496,84 @@ public:
 
     //Метод расчета полной брони (возврат с помощью указателя)
     void AllDefence(Defence& DFN, int* res);
+};
+
+//Производный класс Usable
+class Usable : public Item
+{
+private:
+    int Target;
+    int Effect;
+
+public:
+    //Конструктор с вызовом конструктора базового класса
+    Usable() : Item()
+    {
+        Target = 0;
+        Effect = 0;
+
+        cout << "Конструктор производного класса" << endl;
+    }
+
+    //Перегруженный метод базового класса
+    void CreateItem() override
+    {
+        Item::CreateItem();
+
+        printf("Введите цель и эффект для предмета: ");
+        scanf("%d %d", &Target, &Effect);
+        while (getchar() != '\n');
+    }
+
+    //Перегрузка оператора присваивания
+    Usable& operator=(const Usable& other)
+    {
+        const Usable* usablePointer = dynamic_cast<const Usable*>(&other);
+        if (usablePointer)
+        {
+            Item::operator=(other);
+
+            Target = usablePointer->Target;
+            Effect = usablePointer->Effect;
+        }
+        return *this;
+    }
+};
+
+//Еще один производный класс
+class Unusable : public Item
+{
+private:
+    bool QuestItem;
+
+public:
+    Unusable() : Item()
+    {
+        QuestItem = false;
+
+        cout << "Конструктор производного класса" << endl;
+    }
+
+    //Полная перегрузка метода базового класса без вызова базового
+    void CreateItem() override
+    {
+        printf("Введите название предмета: ");
+        getline(cin, Name);
+
+        printf("Введите тип предмета: ");
+        getline(cin, ItemType);
+
+        printf("Введите цену и вес предмета: ");
+        scanf("%d %d", &Value, &Weight);
+        while (getchar() != '\n');
+
+        printf("Это квестовый предмет: ");
+        if (scanf("%c") == 'y')
+            QuestItem = true;
+        while (getchar() != '\n');
+
+        printf("Вы успешно создали предмет!\n");
+    }
 };
 
 #endif // MYSTRUCTURES_H_INCLUDED

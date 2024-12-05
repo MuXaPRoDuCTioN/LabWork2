@@ -88,5 +88,11 @@ int main() {
     MyInvent2->CheckInventory();
     printf("\n");
 
+    {
+        Usable UsableItem;
+        UsableItem.CreateItem();
+        MyItem = UsableItem;
+        printf("\n");
+    }
 }
 
