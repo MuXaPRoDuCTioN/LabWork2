@@ -4,6 +4,9 @@
 #include <string>
 #include <cstdlib>
 #include <ctime>
+#include <vector>
+#include <algorithm>
+#include <memory>
 #include <stdexcept>
 
 using namespace std;
@@ -296,6 +299,19 @@ public:
         }
         return *this;
     }
+
+    //Метод для вывода информации
+    virtual void displayInfo() const {
+        cout << "Название: " << Name
+                  << ", Тип: " << ItemType
+                        << ", Цена: " << Value
+                            << ", Вес: " << Weight;
+    }
+
+    // Виртуальный метод для сравнения
+    virtual bool operator<(const Item& other) const {
+        return Value < other.Value;
+    }
 };
 
 //№5 Хранит в себе ифнормацию о задании
@@ -573,6 +589,45 @@ public:
         while (getchar() != '\n');
 
         printf("Вы успешно создали предмет!\n");
+    }
+};
+
+//Класс с контейнером
+class NewInventory
+{
+private:
+    vector<unique_ptr<Item>> Items;
+
+public:
+    // Добавление элемента в коллекцию
+    void addItem(unique_ptr<Item> item)
+    {
+        Items.push_back(move(item));
+    }
+
+    // Сортировка коллекции
+    void sortItems() {
+        sort(Items.begin(), Items.end(), [](const auto& a, const auto& b)
+            {
+                return *a < *b;
+            });
+    }
+
+    // Поиск элемента по названию
+    Item* findByTitle(const string& title) {
+        auto it = find_if(Items.begin(), Items.end(),
+            [&title](const auto& item) {
+                return item->getName() == title;
+            });
+
+        return it != Items.end() ? it->get() : nullptr;
+    }
+
+    // Вывод всей коллекции
+    void displayItems() {
+        for (const auto& item : Items) {
+            item->displayInfo();
+        }
     }
 };
 

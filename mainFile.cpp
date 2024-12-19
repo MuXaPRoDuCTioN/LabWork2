@@ -88,11 +88,18 @@ int main() {
     MyInvent2->CheckInventory();
     printf("\n");
 
-    {
-        Usable UsableItem;
-        UsableItem.CreateItem();
-        MyItem = UsableItem;
-        printf("\n");
-    }
+    //Проверка производных классов
+    Usable UsableItem;
+    UsableItem.CreateItem();
+    printf("\n");
+
+    //Проверка контейнеров
+    NewInventory Invent;
+
+    Invent.addItem(make_unique<Item>(MyItem));
+    Invent.addItem(make_unique<Usable>(UsableItem));
+
+    Invent.sortItems();
+    Invent.displayItems();
 }
 
